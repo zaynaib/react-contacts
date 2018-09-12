@@ -8,6 +8,7 @@ import * as ContactsAPI from './utils/ContactsAPI'
 class App extends Component {
     state ={
         //piece of state to render UI it should live inside of a component
+        //react should take care of the state of the data
         contacts:[
             {
               "id": "ryan",
@@ -29,10 +30,16 @@ class App extends Component {
             }
         ]
     }
+
+ removeContact = (contact) =>{
+     this.setState((state) =>({
+         contacts:state.contacts.filter( (c) =>c.id !== contact.id)
+     }))
+ }
   render() {
     return (
         //instead of props it will be a state
-      <ListContacts contacts ={this.state.contacts}/>
+      <ListContacts onDeleteContact={this.removeContact} contacts ={this.state.contacts}/>
     )
   }
 }
