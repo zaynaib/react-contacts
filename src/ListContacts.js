@@ -5,10 +5,28 @@ class ListContacts extends Component{
         console.log('Props',this.props)
 
         return(
-            <ol className='contact-list'>
-            <li>{this.props.contacts.map((contact) =>{this.contact.name})}</li>
+            <ol className = 'contact-list'>
+            {this.props.contacts.map((contact)=> (
+                <li key={contact.id} className='contact-list-item'>
+                    <div className='contact-avatar' style={{
+                        backgroundImage:`url(${contact.avatarURL})`
+                    }}>
+
+                    </div>
+
+                    <div className='contact-details'>
+                        <p>{contact.name}</p>
+                        <p>{contact.email}</p>
+                    </div>
+                    <button className='contact-remove'>
+                        Remove
+                    </button>
+                </li>
+            ))}
 
             </ol>
+
+
         )
     }
 
