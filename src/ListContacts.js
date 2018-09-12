@@ -1,34 +1,28 @@
 import React, {Component} from 'react'
+function ListContacts(props){
+    //instead of getting the props from an instance we get it from the argument of the function
+    return(
+        <ol className = 'contact-list'>
+        {props.contacts.map((contact)=> (
+            <li key={contact.id} className='contact-list-item'>
+                <div className='contact-avatar' style={{
+                    backgroundImage:`url(${contact.avatarURL})`
+                }}>
 
-class ListContacts extends Component{
-    render(){
-        console.log('Props',this.props)
+                </div>
 
-        return(
-            <ol className = 'contact-list'>
-            {this.props.contacts.map((contact)=> (
-                <li key={contact.id} className='contact-list-item'>
-                    <div className='contact-avatar' style={{
-                        backgroundImage:`url(${contact.avatarURL})`
-                    }}>
+                <div className='contact-details'>
+                    <p>{contact.name}</p>
+                    <p>{contact.email}</p>
+                </div>
+                <button className='contact-remove'>
+                    Remove
+                </button>
+            </li>
+        ))}
 
-                    </div>
-
-                    <div className='contact-details'>
-                        <p>{contact.name}</p>
-                        <p>{contact.email}</p>
-                    </div>
-                    <button className='contact-remove'>
-                        Remove
-                    </button>
-                </li>
-            ))}
-
-            </ol>
-
-
-        )
-    }
+        </ol>
+    )
 
 }
 
